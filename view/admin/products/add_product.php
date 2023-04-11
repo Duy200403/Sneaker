@@ -1,9 +1,3 @@
-<?php
-include_once("../../../connect/database.php");
-$sqlAllCategory = "SELECT * FROM category ORDER BY cate_id ASC";
-    $queryAllCategory = mysqli_query($conn, $sqlAllCategory);
-?>
-
 
 <!DOCTYPE html>
 <html>
@@ -12,17 +6,17 @@ $sqlAllCategory = "SELECT * FROM category ORDER BY cate_id ASC";
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Phone Store</title>
 
-<link href="../../../public/css/bootstrap.min.css" rel="stylesheet">
-<link href="../../../public/css/datepicker3.css" rel="stylesheet">
-<link href="../../../public/css/bootstrap-table.css" rel="stylesheet">
-<link href="../../../public/css/styles.css" rel="stylesheet">
+<link href="public/css/bootstrap.min.css" rel="stylesheet">
+<link href="public/css/datepicker3.css" rel="stylesheet">
+<link href="public/css/bootstrap-table.css" rel="stylesheet">
+<link href="public/css/styles.css" rel="stylesheet">
 
 <!--Icons-->
-<script src="../../../public/js/lumino.glyphs.js"></script>
+<script src="public/js/lumino.glyphs.js"></script>
 
 <!--[if lt IE 9]>
-<script src="../../../public/js/html5shiv.js"></script>
-<script src="../../../public/js/respond.min.js"></script>
+<script src="public/js/html5shiv.js"></script>
+<script src="public/js/respond.min.js"></script>
 <![endif]-->
 
 </head>
@@ -89,13 +83,13 @@ $sqlAllCategory = "SELECT * FROM category ORDER BY cate_id ASC";
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="col-md-6">
-                                <form action="../../../controllers/admin/products/product_controller.php" role="form" method="post" enctype="multipart/form-data">
+                                <form action="index.php?controller=product&action=store" role="form" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label>Ảnh sản phẩm</label>
                                             <input name="prd_ima" type="file" onchange="preview()">
                                             <br>
                                             <div>
-                                            <img id = "frame" src="images/product-4.png">
+                                            <img style="width: 200px; height: 200px;" id = "frame" src="public/images/product-4.png">
                                         </div>
                                     </div>
                                 </div>
@@ -130,13 +124,12 @@ $sqlAllCategory = "SELECT * FROM category ORDER BY cate_id ASC";
                                         <label>Danh mục</label>
                                         <select name="cate_id" class="form-control">
                                             <?php
-                                                if(mysqli_num_rows($queryAllCategory)) {
-                                                    while($cate = mysqli_fetch_assoc($queryAllCategory)) {
+                                            foreach($values['categories'] as $category){
+//                                            echo $category['cate_name'];
                                             ?>
-                                            <option value=<?php echo $cate['cate_id']; ?>><?php echo $cate['cate_name']; ?></option>
-                                            <?php
-                                                  }
-                                                }
+                                                <option value="<? $category['cate_id'];?>"><?= $category['cate_name'];?></option>
+                                                <?php
+                                            }
                                             ?>
                                         </select>
                                     </div>

@@ -10,7 +10,7 @@ switch ($action){
 //            Lấy dữ liệu từ DB về
         include_once 'model/categoryModel.php';
 //            Hiển thị dữ liệu lên views
-        include_once 'view/admin/categories/categories.php';
+        include_once 'view/admin/categories/index.php';
         break;
     case 'create':
         //Hiển thị ra form để thêm
@@ -36,7 +36,7 @@ switch ($action){
         break;
     case 'destroy':
 //            Xóa dữ liệu trên db
-        include_once 'models/categoryModel.php';
+        include_once 'model/categoryModel.php';
 //            Quay về trang danh sách
         header('Location:index.php?controller=category');
         break;

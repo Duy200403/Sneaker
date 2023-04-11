@@ -19,7 +19,7 @@ switch ($controller){
         break;
 
     case 'admin':
-        include_once 'controller/customerController.php';
+        include_once 'controller/userController.php';
         break;
     case 'brand':
         include_once 'controller/brandController.php';

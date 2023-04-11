@@ -1,80 +1,73 @@
 <?php
-function indexProductDetails(){
+//function lấy dữ liệu từ db về
+function index(){
     include_once 'connect/open.php';
-    $sql = "SELECT * FROM product_details";
-    $product_details = mysqli_query($connect, $sql);
+    $sql = "SELECT * FROM categories";
+    $categories = mysqli_query($connect, $sql);
     include_once 'connect/close.php';
-    return $product_details;
+    return $categories;
 }
-
-function createProductDetails(){
-    return;
-}
-
-function storeProductDetails(){
-    $prd_dt_size = $_POST['prd_dt_size'];
-    $prd_dt_new = $_POST['prd_dt_new'];
-    $prd_dt_color = $_POST['prd_dt_color'];
-    $prd_dt_ima = $_POST['prd_dt_ima'];
-    $prd_id = $_POST['prd_id'];
+//    function thêm dữ liệu lên db
+function store(){
+//        Lấy dữ liệu từ form về
+    $cate_name = $_POST['cate_name'];
     include_once 'connect/open.php';
-    $sql = "INSERT INTO product_details(prd_dt_size, prd_dt_new, prd_dt_color, prd_dt_ima, prd_id) VALUES ('$prd_dt_size', '$prd_dt_new', '$prd_dt_color', '$prd_dt_ima', '$prd_id')";
+    $sql = "INSERT INTO categories(cate_name) VALUES ('$cate_name')";
+    mysqli_query($connect, $sql);
+    include_once 'connect/close.php';
+}
+//    function để lấy dữ liệu theo id
+function edit(){
+//        Lấy id
+    $cate_id = $_GET['id'];
+    include_once 'connect/open.php';
+    $sql = "SELECT * FROM categories WHERE cate_id = '$cate_id'";
+    $categories = mysqli_query($connect, $sql);
+    include_once 'connect/close.php';
+    return $categories;
+}
+//    function sửa dữ liệu trên db theo id
+function update(){
+//        Lấy dữ liệu cần update lên db
+    $cate_id = $_POST['cate_id'];
+    $cate_name = $_POST['cate_name'];
+
+    include_once 'connect/open.php';
+    $sql = "UPDATE categories SET cate_name = '$cate_name' WHERE cate_id = '$cate_id'";
+    $categories = mysqli_query($connect, $sql);
+    include_once 'connect/close.php';
+}
+//    function xóa dữ liệu trên db theo id
+function destroy(){
+//        Lấy id
+    $cate_id = $_GET['id'];
+    include_once 'connect/open.php';
+    $sql = "DELETE FROM categories WHERE cate_id = '$cate_id'";
     mysqli_query($connect, $sql);
     include_once 'connect/close.php';
 }
 
-function editProductDetails(){
-    $prd_dt_id = $_GET['prd_dt_id'];
-    include_once 'connect/open.php';
-    $sql = "SELECT * FROM product_details WHERE prd_dt_id = '$prd_dt_id'";
-    $product_details = mysqli_query($connect, $sql);
-    include_once 'connect/close.php';
-    return $product_details;
-}
-
-function updateProductDetails(){
-    $prd_dt_id = $_POST['prd_dt_id'];
-    $prd_dt_size = $_POST['prd_dt_size'];
-    $prd_dt_new = $_POST['prd_dt_new'];
-    $prd_dt_color = $_POST['prd_dt_color'];
-    $prd_dt_ima = $_POST['prd_dt_ima'];
-    $prd_id = $_POST['prd_id'];
-    include_once 'connect/open.php';
-    $sql = "UPDATE product_details SET prd_dt_size = '$prd_dt_size', prd_dt_new = '$prd_dt_new', prd_dt_color = '$prd_dt_color', prd_dt_ima = '$prd_dt_ima', prd_id = '$prd_id' WHERE prd_dt_id = '$prd_dt_id'";
-    mysqli_query($connect, $sql);
-    include_once 'connect/close.php';
-}
-
-function destroyProductDetails(){
-    $prd_dt_id = $_GET['prd_dt_id'];
-    include_once 'connect/open.php';
-    $sql = "DELETE FROM product_details WHERE prd_dt_id = '$prd_dt_id'";
-    mysqli_query($connect, $sql);
-    include_once 'connect/close.php';
-}
-
-// Kiểm tra hành động hiện tại
+//    Kiểm tra đang thực hiện hành động gì
 switch ($action){
     case '':
-        $product_details = indexProductDetails();
-        break;
-    case 'create':
-        $product_details = createProductDetails();
+        //Lấy dữ liệu từ db về
+        $categories = index();
         break;
     case 'store':
-        storeProductDetails();
-        header('Location: index.php?action=');
+        //Thêm dữ liệu lên DB
+        store();
         break;
     case 'edit':
-        $product_details = editProductDetails();
+        //Lấy bản ghi theo id
+        $categories = edit();
         break;
     case 'update':
-        updateProductDetails();
-        header('Location: index.php?action=');
+        //Sửa dữ liệu trên db theo id
+        update();
         break;
     case 'destroy':
-        destroyProductDetails();
-        header('Location: index.php?action=');
+//            Xóa dữ liệu trên db theo id
+        destroy();
         break;
 }
 ?>

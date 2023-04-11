@@ -6,10 +6,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="../../public/css/login.css">
-    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../public/css/datepicker3.css" rel="stylesheet">
-    <link href="../../public/css/bootstrap-table.css" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/login.css">
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/datepicker3.css" rel="stylesheet">
+    <link href="public/css/bootstrap-table.css" rel="stylesheet">
 </head>
 <body>
 <div class="login-content">
@@ -19,7 +19,7 @@
 
     </div>
     <br><br>
-    <form role="form" method="post" action="index.php?controller=login&action=checklogin">
+    <form role="form" method="post" action="index.php?controller=users&action=loginProcess">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
             <input type="text" class="form-control" name="user_name" aria-describedby="emailHelp" placeholder="Vui lòng nhập email của bạn">

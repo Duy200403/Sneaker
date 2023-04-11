@@ -60,16 +60,16 @@
             </div> -->
         </form>
         <ul class="nav menu">
-            <li><a href="../client/admin.php"><svg class="glyph stroked dashboard-dial">
+            <li><a href="index.php?controller=category"><svg class="glyph stroked dashboard-dial">
                         <use xlink:href="#stroked-dashboard-dial"></use>
                     </svg> Dashboard</a></li>
             <li><a href="../user/user.php"><svg class="glyph stroked male user ">
                         <use xlink:href="#stroked-male-user" />
                     </svg>Quản lý thành viên</a></li>
-            <li><a href="../categories/category.php"><svg class="glyph stroked clipboard with paper">
+            <li><a href="index.php?controller=category"><svg class="glyph stroked clipboard with paper">
                         <use xlink:href="#stroked-clipboard-with-paper"/>
                     </svg>Quản lý danh mục</a></li>
-            <li class="active"><a href="product.php"><svg class="glyph stroked bag">
+            <li class="active"><a href="index.php?controller=product"><svg class="glyph stroked bag">
                         <use xlink:href="#stroked-bag"></use>
                     </svg>Quản lý sản phẩm</a></li>
             <li><a href="order.php"><svg class="glyph stroked two messages">
@@ -99,7 +99,7 @@
         </div>
         <!--/.row-->
         <div id="toolbar" class="btn-group">
-            <a href="add_product.php" class="btn btn-primary">
+            <a href="index.php?controller=product&action=create" class="btn btn-primary">
                 <i class="glyphicon glyphicon-plus"></i> Thêm sản phẩm
             </a>
         </div>
@@ -123,7 +123,6 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $stt = 1;
                                 foreach($array['products'] as $item){
                                 ?>
                                 <tr>
@@ -143,7 +142,7 @@
                                         ?>
                                     </td>
                                     <!-- <td><span class="label label-success"><?php echo $item['prd_status']; ?></span></td> -->
-                                    <td style=""><?php echo $item['prd_dt_new']; ?></td>
+                                    <td style=""><?php echo $item['prd_new']; ?></td>
                                     <td><?php echo $item['cate_name']; ?></td>
                                     <td class="form-group">
                                         <a href="index.php?controller=product&action=edit&id=<?= $item['prd_id']  ?>" class="btn btn-primary"><i
@@ -153,7 +152,6 @@
                                     </td>
                                 </tr>
                                     <?php
-                                    $stt++;
                                 }
                                 ?>
                             </tbody>

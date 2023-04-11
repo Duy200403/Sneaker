@@ -6,17 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Phone Store</title>
 
-<link href="../../../public/css/bootstrap.min.css" rel="stylesheet">
-<link href="../../../public/css/datepicker3.css" rel="stylesheet">
-<link href="../../../public/css/bootstrap-table.css" rel="stylesheet">
-<link href="../../../public/css/styles.css" rel="stylesheet">
+<link href="public/css/bootstrap.min.css" rel="stylesheet">
+<link href="public/css/datepicker3.css" rel="stylesheet">
+<link href="public/css/bootstrap-table.css" rel="stylesheet">
+<link href="public/css/styles.css" rel="stylesheet">
 
 <!--Icons-->
-<script src="../../../public/js/lumino.glyphs.js"></script>
+<script src="public/js/lumino.glyphs.js"></script>
 
 <!--[if lt IE 9]>
-<script src="../../../public/js/html5shiv.js"></script>
-<script src="../../../public/js/respond.min.js"></script>
+<script src="public/js/html5shiv.js"></script>
+<script src="public/js/respond.min.js"></script>
 <![endif]-->
 
 </head>
@@ -84,13 +84,8 @@
                     <div class="panel-body">
                         <div class="col-md-8">
 							<div class="mb-3">
-								<?php
-								if(isset($errors['error'])){
-									echo $errors['error'];
-								}
-								?>
 							</div>
-                            <form role="form" method="post" action="">
+                            <form role="form" method="post" action="index.php?controller=category&action=store">
                             <div class="form-group">
                                 <label>Tên danh mục:</label>
                                 <input required type="text" name="cate_name" class="form-control" placeholder="Tên danh mục...">

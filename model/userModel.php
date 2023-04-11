@@ -1,18 +1,18 @@
 <?php
 function loginProcess(){
-    $cus_email = $_POST['email'];
-    $cus_password = $_POST['password'];
+    $user_email = $_POST['email'];
+    $user_password = $_POST['password'];
     include_once 'connect/open.php';
-    $sql = "SELECT *, COUNT(*) AS count_customer FROM customers WHERE email = '$cus_email' AND password = '$cus_password'";
-    $customers = mysqli_query($connect, $sql);
-    foreach ($customers as $customer){
+    $sql = "SELECT *, COUNT(*) AS count_user FROM user WHERE email = '$user_email' AND password = '$user_password'";
+    $user = mysqli_query($connect, $sql);
+    foreach ($user as $customer){
         if($customer['count_customer'] == 0){
 //                login sai
             return 0;
         } else {
 //                login đúng
-            $_SESSION['$cus_email'] = $customer['$cus_email'];
-            $_SESSION['$cus_password'] = $customer['$cus_password'];
+            $_SESSION['$user_email'] = $customer['$user_email'];
+            $_SESSION['$user_password'] = $customer['$user_password'];
             return 1;
         }
     }

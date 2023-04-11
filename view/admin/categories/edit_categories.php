@@ -6,17 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Phone Store</title>
 
-<link href="../../../public/css/bootstrap.min.css" rel="stylesheet">
-<link href="../../../public/css/datepicker3.css" rel="stylesheet">
-<link href="../../../public/css/bootstrap-table.css" rel="stylesheet">
-<link href="../../../public/css/styles.css" rel="stylesheet">
+<link href="public/css/bootstrap.min.css" rel="stylesheet">
+<link href="public/css/datepicker3.css" rel="stylesheet">
+<link href="public/css/bootstrap-table.css" rel="stylesheet">
+<link href="public/css/styles.css" rel="stylesheet">
 
 <!--Icons-->
-<script src="../../../public/js/lumino.glyphs.js"></script>
+<script src="public/js/lumino.glyphs.js"></script>
 
 <!--[if lt IE 9]>
-<script src="../../../public/js/html5shiv.js"></script>
-<script src="../../../public/js/respond.min.js"></script>
+<script src="public/js/html5shiv.js"></script>
+<script src="public/js/respond.min.js"></script>
 <![endif]-->
 
 </head>
@@ -81,26 +81,25 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
+                    <?php
+                    foreach ($categories as $category){
+                    ?>
                     <div class="panel-body">
 					<div class="mb-3">
-								<?php
-                                    include_once ('connect/connect.php');
-                                    foreach($record as $item){
-                                    include_once('connect/close.php');
-                                }
-								?>
 							</div>
-                        <form role="form" method="post" action="?controller=<?= $controllers ?>&redirect=<?= $redirect ?>&action=update">
+                        <form role="form" method="post" action="index.php?controller=category&action=update">
                             <div class="form-group">
                                 <label>Tên danh mục:</label>
-                                <input type="hidden" name="cate_id" value="<?= $item['cate_id'];?>">
-                                <input type="text" name="cate_name" value="<?php echo $item['cate_name'];?>"
-<!--                                <input type="text" name="cate_name" required value="--><?php //echo $cateEdit['cate_name'];?><!--" class="form-control" placeholder="Tên danh mục...">-->
+                                <input type="hidden" name="cate_id" value="<?= $category ['cate_id'];?>">
+                                <input type="text" name="cate_name" value="<?= $category ['cate_name'];?>"
                             </div>
                             <button type="submit" name="sbm" class="btn btn-primary">Cập nhật</button>
                             <button type="reset" class="btn btn-default">Làm mới</button>
                         </div>
                     </form>
+                        <?php
+                    }
+                    ?>
                     </div>
                 </div>
             </div><!-- /.col-->

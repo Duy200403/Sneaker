@@ -18,26 +18,46 @@ function index(){
     $countPage = ceil($countRecord / $recordOnePage);
     $start = ($page - 1) * $recordOnePage;
     $sql = "SELECT * FROM products WHERE prd_name LIKE '%$search%' LIMIT $start, $recordOnePage";
-    $laptops = mysqli_query($connect, $sql);
+    $sql = "SELECT p.*, c.cate_name, s.size
+        FROM products p
+        JOIN categories c ON p.cate_id = c.cate_id
+        JOIN size s ON p.size_id = s.size_id;";
+    $products = mysqli_query($connect, $sql);
     include_once 'connect/close.php';
     $array = array();
     $array['search'] = $search;
-    $array['products'] = $laptops;
+    $array['products'] = $products;
     $array['page'] = $countPage;
     return $array;
 }
 function create(){
     include_once 'connect/open.php';
-    $sql = "SELECT * FROM products";
-    $products = mysqli_query($connect, $sql);
+//    $sql = "SELECT p.*, c.cate_name, s.size
+//        FROM products p
+//        JOIN categories c ON p.cate_id = c.cate_id
+//        JOIN size s ON p.size_id = s.size_id;";
+    $sql_1 = "SELECT * FROM categories";
+    $query_1 = mysqli_query($connect, $sql_1);
+    $sql_2 = "SELECT * FROM size";
+    $query_2 = mysqli_query($connect, $sql_2);
+//    $products = mysqli_query($connect, $sql);
     include_once 'connect/close.php';
-    return $products;
+    $values = array(); // tạo một mảng rỗng để lưu giá trị
+    $values['categories'] = $query_1;
+    $values['size'] = $query_2;
+    return $values;
 }
 function store(){
     $Prd_name = $_POST['prd_name'];
     $prd_ima = $_POST['prd_ima'];
     $Prd_price = $_POST['Prd_price'];
-    $Prd_featured = $_POST['Prd_featured'];
+    if(isset($_POST['prd_featured'])){
+        $featured = 1;
+    }else{
+        $featured = 0;
+    }
+    $Prd_new = $_POST['prd_new'];
+    $Prd_status = $_POST['prd_status'];
     include_once 'connect/open.php';
     $sql = "INSERT INTO Products (Prd_name, Prd_ima, Prd_price, Prd_featured,Prd_new,Prd_status, cate_id) VALUES ('Prd_name', 'Prd_ima', 'Prd_price', 'Prd_featured','Prd_new','Prd_status', 'cate_id')";
     mysqli_query($connect, $sql);

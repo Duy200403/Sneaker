@@ -6,17 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Phone Store</title>
 
-<link href="../../../public/css/bootstrap.min.css" rel="stylesheet">
-<link href="../../../public/css/datepicker3.css" rel="stylesheet">
-<link href="../../../public/css/bootstrap-table.css" rel="stylesheet">
-<link href="../../../public/css/styles.css" rel="stylesheet">
+<link href="public/css/bootstrap.min.css" rel="stylesheet">
+<link href="public/css/datepicker3.css" rel="stylesheet">
+<link href="public/css/bootstrap-table.css" rel="stylesheet">
+<link href="public/css/styles.css" rel="stylesheet">
 
 <!--Icons-->
-<script src="../../../public/js/lumino.glyphs.js"></script>
+<script src="public/js/lumino.glyphs.js"></script>
 
 <!--[if lt IE 9]>
-<script src="../../../public/js/html5shiv.js"></script>
-<script src="../../../public/js/respond.min.js"></script>
+<script src="public/js/html5shiv.js"></script>
+<script src="public/js/respond.min.js"></script>
 <![endif]-->
 
 </head>
@@ -53,10 +53,10 @@
 			</div>
 		</form> -->
 		<ul class="nav menu">
-            <li><a href="?controller=admin"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+            <li><a href="index.php?controller=dashboard"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
             <li><a href="?controller=admin&redirect=user"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>Quản lý thành viên</a></li>
-            <li class="active"><a href="?controller=admin&redirect=categories"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg>Quản lý danh mục</a></li>
-            <li><a href="?controller=admin&redirect=product"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>Quản lý sản phẩm</a></li>
+            <li class="active"><a href="index.php?controller=category"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg>Quản lý danh mục</a></li>
+            <li><a href="index.php?controller=product"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>Quản lý sản phẩm</a></li>
 			<li><a href="order.php"><svg class="glyph stroked two messages">
                         <use xlink:href="#stroked-two-messages" />
                     </svg> Quản lý khách hàng</a></li>
@@ -78,7 +78,7 @@
 			</div>
 		</div><!--/.row-->
 		<div id="toolbar" class="btn-group">
-            <a href="?controller=<?= $controllers ?>&redirect=<?= $redirect ?>&action=create" class="btn btn-primary">
+            <a href="index.php?controller=category&action=create" class="btn btn-primary">
                 <i class="glyphicon glyphicon-plus"></i> Thêm danh mục
             </a>
         </div>
@@ -99,19 +99,17 @@
 									</thead>
 									<tbody>
 										<?php
-                                            $stt =1;
-                                            foreach($record as $item){
+                                        foreach($categories as $category){
 										?>
 										<tr>
-											<td style=""><$stt?></td>
-											<td style=""><$item['cate_name']?></td>
+											<td style=""> <?= $category ['cate_id'] ?> </td>
+											<td style=""> <?= $category ['cate_name'] ?> </td>
 											<td class="form-group">
-											<a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=edit&cate_id=<?= $item['cate_id'];?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-											<a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=destroy&cate_id=<?= $item['cate_id'];?>" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+											<a href="index.php?controller=category&action=edit&id=<?= $category['cate_id'] ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
+											<a href="index.php?controller=category&action=destroy&id=<?= $category['cate_id'] ?>" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
 											</td>
 										</tr>
 										<?php
-                                            $stt++;
                                             }
 										?>
 										
@@ -135,9 +133,9 @@
 		</div><!--/.row-->
 	</div>	<!--/.main-->
 
-	<script src="../../../public/js/jquery-1.11.1.min.js"></script>
-	<script src="../../../public/js/bootstrap.min.js"></script>
-	<script src="../../../public/js/bootstrap-table.js"></script>
+	<script src="public/js/jquery-1.11.1.min.js"></script>
+	<script src="public/js/bootstrap.min.js"></script>
+	<script src="public/js/bootstrap-table.js"></script>
 </body>
 
 </html>

@@ -14,7 +14,7 @@ switch ($action){
         }
         break;
     case 'loginProcess':
-        include_once 'model/customerModel.php';
+        include_once 'model/userModel.php';
         if($test == 0){
             header('Location:index.php?controller=admins&action=login');
         } elseif($test == 1) {
@@ -22,7 +22,7 @@ switch ($action){
         }
         break;
     case 'logout':
-        include_once 'models/customerModel.php';
+        include_once 'model/userModel.php';
         header('Location:index.php?controller=admins&action=login');
         break;
 }
