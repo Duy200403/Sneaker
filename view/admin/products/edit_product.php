@@ -81,12 +81,16 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                        <form action="" role="form" method="post" enctype="multipart/form-data">    
+                            <?php
+                            foreach($array['products'] as $products){
+                            ?>
+                        <form action="index.php?controller=product&action=update&id=<?= $products['prd_id'];?>" role="form" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="prd_id" value="">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Ảnh sản phẩm</label>
                                             <input required name="prd_ima" type="file" onchange="preview()">
-                                            <img id="frame"src="images/<?php echo $product['prd_ima'] ?>">
+                                            <img style="width: 200px; height: 200px;" id="frame"src="Public/images/<?= $products['prd_ima'];?>">
                                             <br>
                                     </div>
                                 </div>
@@ -95,18 +99,19 @@
                                         <label>ID</label>
                                         <input required name="prd_id" class="form-control" placeholder="">
                                     </div> -->
+
                                     <div class="form-group">
                                         <label>Tên sản phẩm</label>
-                                        <input required name="prd_name" class="form-control" placeholder="">
+                                        <input required name="prd_name" class="form-control" placeholder="" value="<?=$products['prd_name']?>">
                                     </div>
                                                                 
                                     <div class="form-group">
                                         <label>Giá sản phẩm</label>
-                                        <input required name="prd_price" type="number" min="0" class="form-control">
+                                        <input required name="prd_price" type="number" min="0" class="form-control" value="<?=$products['prd_price']?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Tình Trạng</label>
-                                        <input required name="prd_new" type="text" min="0" class="form-control">
+                                        <input required name="prd_status" type="text" min="0" class="form-control"value="<?=$products['prd_status']?>">
                                     </div>
                                     <div class="form-group">
                                         <label label>Trạng thái</label>
@@ -118,34 +123,47 @@
                                     <div class="form-group">
                                         <label>Danh mục</label>
                                         <select name="cate_id" class="form-control">
+                                        <?php
+                                            foreach($array['categories']  as $category){
+                                        ?>
+                                            <option <?php if($products['size_id'] == $category['cate_id']){echo 'selected';}?> value=<?php echo $category['cate_id'] ?>><?php echo $category['cate_name'] ?></option>
                                             <?php
-                                                if(mysqli_num_rows($queryAllCategory)) {
-                                                    while($cate = mysqli_fetch_assoc($queryAllCategory)) {
-                                            ?>
-                                            <option value=<?php echo $cate['cate_id']; ?>><?php echo $cate['cate_name']; ?></option>
-                                            <?php
-                                                  }
                                                 }
                                             ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <label>Size</label>
+                                        <select name="size_id" class="form-control">
+                                            <?php
+                                            foreach($array['size'] as $size){
+                                                ?>
+                                                <option <?php if($products['size_id'] == $size['size_id']){echo 'selected';}?> value="<?php echo $size['size_id'];?>"><?php echo $size['size'];?></option>
+                                                <?php
+                                            }?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label>Mô tả sản phẩm</label>
-                                        <textarea required name="prd_details" class="form-control" rows="3"></textarea>
+                                        <textarea required name="prd_new" value="<?= $products['prd_new'];?>"  class="form-control" rows="3"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Sản phảm nổi bật</label>
                                         <div class="checkbox">
                                             <label>
-                                                <input name="prd_featured" type="checkbox" <?php if($product['prd_featured'] == 1){echo 'checked';} ?>>Nổi bật
+                                                <input name="prd_featured" type="checkbox" <?php if($products['prd_featured'] == 1){echo 'checked';} ?>>Nổi bật
                                             </label>
                                         </div>
                                     </div>
+
                                     <button name="sbm" type="submit" class="btn btn-success">Thêm mới</button>
                                     <button type="reset" class="btn btn-default">Làm mới</button>
                                 </div>
                             </div>
-                        </form>
+                            </form>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div><!-- /.col-->
             </div><!-- /.row -->

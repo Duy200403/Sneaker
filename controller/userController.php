@@ -5,25 +5,29 @@ if(isset($_GET['action'])){
 }
 
 switch ($action){
-    case 'login':
-        if(isset($_SESSION['email'])){
-            header('Location:index.php');
-        } else {
-            //            Hiển thị form login
-            include_once 'view/login/login.php';
-        }
+    case '':
+        include_once  "model/userModel.php";
+        include_once "view/admin/index.php";
         break;
-    case 'loginProcess':
-        include_once 'model/userModel.php';
-        if($test == 0){
-            header('Location:index.php?controller=admins&action=login');
-        } elseif($test == 1) {
-            header('Location:index.php');
-        }
+    case 'create':
+        include_once "view/admin/user/add_user.php";
         break;
-    case 'logout':
-        include_once 'model/userModel.php';
-        header('Location:index.php?controller=admins&action=login');
+    case 'store':
+        include_once "model/userModel.php";
+        header('Location:index.php?controller=user');
+        break;
+    case 'edit':
+        include_once "model/userModel.php";
+        include_once "view/admin/user/edit_user.php";
+        break;
+    case 'update':
+        include_once "model/userModel.php";
+        header('Location:index.php?controller=user');
+        break;
+    case 'remove':
+        include_once "model/userModel.php";
+        header('Location:index.php?controller=user');
         break;
 }
+
 ?>

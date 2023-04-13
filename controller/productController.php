@@ -14,6 +14,7 @@ switch ($action){
         break;
     case 'create':
         //Hiển thị ra form để thêm
+        include_once 'model/productModel.php';
         include_once 'view/admin/products/add_product.php';
         break;
     case 'store':

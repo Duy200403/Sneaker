@@ -108,11 +108,6 @@
                                     <div class="form-group">
                                         <label>Giá sản phẩm</label>
                                         <input required name="prd_price" type="number" min="0" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Tình Trạng</label>
-                                        <input required name="prd_new" type="text" min="0" class="form-control">
-                                    </div>
                                     <div class="form-group">
                                         <label label>Trạng thái</label>
                                         <select name="prd_status" class="form-control">
@@ -122,12 +117,25 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Danh mục</label>
-                                        <select name="cate_id" class="form-control">
+                                        <select name="Cate_id" class="form-control">
+                                            <option>Chọn</option>
                                             <?php
-                                            foreach($values['categories'] as $category){
-//                                            echo $category['cate_name'];
+                                            foreach($array['categories']  as $category){
                                             ?>
-                                                <option value="<? $category['cate_id'];?>"><?= $category['cate_name'];?></option>
+                                                <option value=<?= $category['cate_id']?>><?= $category['cate_name']?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Size</label>
+                                        <select name="Size_id" class="form-control">
+                                            <option>Chọn</option>
+                                            <?php
+                                            foreach($array ['size'] as $size){
+                                                ?>
+                                                <option value="<?= $size['size_id'];?>"><?= $size['size'];?></option>
                                                 <?php
                                             }
                                             ?>
@@ -135,7 +143,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Mô tả sản phẩm</label>
-                                        <textarea required name="prd_details" class="form-control" rows="3"></textarea>
+                                        <textarea required name="prd_new" class="form-control" rows="3"></textarea>
                                     </div>
                                     <div class="checkbox">
                                             <label>

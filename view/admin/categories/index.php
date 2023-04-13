@@ -53,10 +53,10 @@
 			</div>
 		</form> -->
 		<ul class="nav menu">
-            <li><a href="index.php?controller=dashboard"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
-            <li><a href="?controller=admin&redirect=user"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>Quản lý thành viên</a></li>
+            <li><a href="../client/dashboard.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+            <li><a href="index.php?controller=user"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>Quản lý thành viên</a></li>
             <li class="active"><a href="index.php?controller=category"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg>Quản lý danh mục</a></li>
-            <li><a href="index.php?controller=product"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>Quản lý sản phẩm</a></li>
+            <li><a href="../products/index.php"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>Quản lý sản phẩm</a></li>
 			<li><a href="order.php"><svg class="glyph stroked two messages">
                         <use xlink:href="#stroked-two-messages" />
                     </svg> Quản lý khách hàng</a></li>

@@ -46,10 +46,18 @@
                 <ul>
                     <li><a href="http://localhost/ShopSneakers/index.php">Trang chủ</a></li>
                     <li><a href="">Sản phẩm</a>
+
                         <ul class="menu_child">
-                            <li><a href="">Giày nam</a></li>
+                            <?php
+                            foreach($array['products'] as $item){
+                                ?>
+                                <li><a href="<?$item['cate_id'];?>"> <?=$item['cate_name']; ?> </a></li>
+                                <?php
+                            }
+                            ?>
+                            <!--<li><a href="">Giày nam</a></li>
                             <li><a href="">Giày nữ</a></li>
-                            <li><a href="">Giày trẻ em</a></li>
+                            <li><a href="">Giày trẻ em</a></li>-->
                         </ul>
                     </li>
                     <li><a href="">Liên hệ</a></li>
@@ -68,20 +76,20 @@
                     <div class="numbertext">
                         1/3
                     </div>
-                    <img class="hinh1" src="../../public/images/home_hero.jpg" style="width: 100%;">
+                    <img class="hinh1" src="public/images/home_hero.jpg" style="width: 100%;">
 
                 </div>
                 <div class="mySlides fade">
                     <div class="numbertext">
                         2/3
                     </div>
-                    <img class="hinh1" src="../../public/images/list2.jpg" style="width: 100%;">
+                    <img class="hinh1" src="public/images/2.jpg" style="width: 100%;">
                 </div>
                 <div class="mySlides fade">
                     <div class="numbertext">
                         3/3
                     </div>
-                    <img class="hinh1" src="../../public/images/5.jpg" style="width: 100%;">
+                    <img class="hinh1" src="public/images/5.jpg" style="width: 100%;">
                 </div>
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -96,142 +104,57 @@
     </div>
     <div class="row">
         <div class="col-12 title">
-            <h3>Product</h3>
+            <h3>Sản Phẩm Nổi Bật </h3>
+        </div>
+    </div>
+        <div class="row">
+            <?php
+            foreach ($array['products'] as $item){
+            ?>
+            <div class="col-2th">
+                <div class="card">
+                    <div class="image">
+                        <img src="public/images/<?= $item['prd_ima']; ?>">
+                    </div>
+                    <div class="name">
+                        <p><?= $item['prd_name']; ?></p>
+                    </div>
+                    <div class="price">
+                        <p><?= $item['prd_price']; ?></p>
+                    </div>
+                </div>
+            </div>
+                <?php
+            }
+            ?>
+        </div>
+    <div class="row">
+        <div class="col-12 title">
+            <h3>Sản Phẩm </h3>
         </div>
     </div>
     <div class="row">
-        <div class="col-2th">
-            <div class="card">
-                <div class="image">
-                    <img src="../../public/images/1.jpg">
-                </div>
-                <div class="name">
-                    <p>Nike</p>
-                </div>
-                <div class="price">
-                    <p>23.000.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-2th">
-            <div class="card">
-                <div class="image">
-                    <img src="uploads/1.jpg">
-                </div>
-                <div class="name">
-                    <p>Nike</p>
-                </div>
-                <div class="price">
-                    <p>23.000.000 VNĐ</p>
+        <?php
+        foreach ($array['products'] as $item){
+            ?>
+            <div class="col-2th">
+                <div class="card">
+                    <div class="image">
+                        <img src="public/images/<?= $item['prd_ima']; ?>">
+                    </div>
+                    <div class="name">
+                        <p><?= $item['prd_name']; ?></p>
+                    </div>
+                    <div class="price">
+                        <p><?= $item['prd_price']; ?></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-2th">
-            <div class="card">
-                <div class="image">
-                    <img src="uploads/1.jpg">
-                </div>
-                <div class="name">
-                    <p>Nike</p>
-                </div>
-                <div class="price">
-                    <p>23.000.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-2th">
-            <div class="card">
-                <div class="image">
-                    <img src="uploads/1.jpg">
-                </div>
-                <div class="name">
-                    <p>Nike</p>
-                </div>
-                <div class="price">
-                    <p>23.000.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-2th">
-            <div class="card">
-                <div class="image">
-                    <img src="uploads/1.jpg">
-                </div>
-                <div class="name">
-                    <p>Nike</p>
-                </div>
-                <div class="price">
-                    <p>23.000.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-2th">
-            <div class="card">
-                <div class="image">
-                    <img src="uploads/1.jpg">
-                </div>
-                <div class="name">
-                    <p>Nike</p>
-                </div>
-                <div class="price">
-                    <p>23.000.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-2th">
-            <div class="card">
-                <div class="image">
-                    <img src="uploads/1.jpg">
-                </div>
-                <div class="name">
-                    <p>Nike</p>
-                </div>
-                <div class="price">
-                    <p>23.000.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-2th">
-            <div class="card">
-                <div class="image">
-                    <img src="uploads/1.jpg">
-                </div>
-                <div class="name">
-                    <p>Nike</p>
-                </div>
-                <div class="price">
-                    <p>23.000.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-2th">
-            <div class="card">
-                <div class="image">
-                    <img src="uploads/1.jpg">
-                </div>
-                <div class="name">
-                    <p>Nike</p>
-                </div>
-                <div class="price">
-                    <p>23.000.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-2th">
-            <div class="card">
-                <div class="image">
-                    <img src="uploads/1.jpg">
-                </div>
-                <div class="name">
-                    <p>Nike</p>
-                </div>
-                <div class="price">
-                    <p>23.000.000 VNĐ</p>
-                </div>
-            </div>
-        </div>
+            <?php
+        }
+        ?>
     </div>
-</div>
+
 <footer>
     <div class="container">
         <div class="row footer">
