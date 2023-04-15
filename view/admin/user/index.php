@@ -78,7 +78,7 @@
 			</div>
 		</div><!--/.row-->
 		<div id="toolbar" class="btn-group">
-            <a href="add_user.php" class="btn btn-primary">
+            <a href="index.php?controller=user&action=create" class="btn btn-primary">
                 <i class="glyphicon glyphicon-plus"></i> Thêm thành viên
             </a>
         </div>
@@ -95,19 +95,24 @@
 						        <th data-field="id" data-sortable="true">ID</th>
 						        <th data-field="name"  data-sortable="true">Họ & Tên</th>
                                 <th data-field="price" data-sortable="true">Email</th>
+                                <th>Mật Khẩu</th>
+                                <th>Phone</th>
+                                <th>Địa Chỉ</th>
                                 <th>Quyền</th>
                                 <th>Hành động</th>
 						    </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                    if(mysqli_num_rows($queryAllUser) > 0) {
-                                        while($user = mysqli_fetch_assoc($queryAllUser)) {
+                                    foreach($array as $user){
                                         ?>
                                 <tr>
                                     <td style=""><?php echo $user['user_id']; ?></td>
                                     <td style=""><?php echo $user['user_name']; ?></td>
                                     <td style=""><?php echo $user['user_email']; ?></td>
+                                    <td style=""><?php echo $user['user_password']; ?></td>
+                                    <td style=""><?php echo $user['phone_number']; ?></td>
+                                    <td style=""><?php echo $user['user_address']; ?></td>
                                     <td>
                                         <?php
                                             if($user['user_level'] == 1) {
@@ -118,12 +123,11 @@
                                         ?>
                                     </td>
                                     <td class="form-group">
-                                        <a href="edit_user.php?user_id= <?php echo $user['user_id']; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-                                        <a href="remove_user.php?user_id= <?php echo $user['user_id']; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                                        <a href="index.php?controller=user&action=edit&id=<?= $user['user_id']  ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a href="index.php?controller=user&action=destroy&id=<?= $user['user_id']  ?>" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                                     </td>
                                 </tr>
                                 <?php
-                                    }
                                 }
                                 ?>
                             </tbody>

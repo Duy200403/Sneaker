@@ -7,9 +7,10 @@ if(isset($_GET['action'])){
 switch ($action){
     case '':
         include_once  "model/userModel.php";
-        include_once "view/admin/index.php";
+        include_once "view/admin/user/index.php";
         break;
     case 'create':
+        include_once "model/userModel.php";
         include_once "view/admin/user/add_user.php";
         break;
     case 'store':
@@ -24,7 +25,7 @@ switch ($action){
         include_once "model/userModel.php";
         header('Location:index.php?controller=user');
         break;
-    case 'remove':
+    case 'destroy':
         include_once "model/userModel.php";
         header('Location:index.php?controller=user');
         break;

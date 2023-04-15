@@ -19,15 +19,15 @@
 
     </div>
     <br><br>
-    <form role="form" method="post" action="index.php?controller=users&action=loginProcess">
+    <form role="form" method="post" action="index.php?controller=user">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="text" class="form-control" name="user_name" aria-describedby="emailHelp" placeholder="Vui lòng nhập email của bạn">
+            <input type="text" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Vui lòng nhập email của bạn">
 
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Mật Khẩu</label>
-            <input type="password" class="form-control" name="pass_word" placeholder="Vui lòng nhập mật khẩu">
+            <input type="password" class="form-control" name="password" placeholder="Vui lòng nhập mật khẩu">
         </div>
 
         <div class="button-login">

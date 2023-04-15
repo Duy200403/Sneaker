@@ -15,8 +15,11 @@ switch ($controller){
         //Cho chọn làm việc với controller nào
         include_once 'controller/productController.php';
         break;
-    case 'admin':
+    case 'user':
         include_once 'controller/userController.php';
+        break;
+    case 'admin':
+        include_once 'controller/adminController.php';
         break;
     case 'login':
         include_once 'controller/loginController.php';

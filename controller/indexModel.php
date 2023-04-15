@@ -11,11 +11,11 @@ switch ($action){
         break;
     case 'category':
         include_once 'model/productModel.php';
-        include_once 'view/index.php';
+        include_once 'view/categories.php';
         break;
     case 'product':
        include_once 'model/productModel.php';
-       include_once 'view/index.php';
+       include_once 'view/product_details.php';
        break;
 }
 ?>

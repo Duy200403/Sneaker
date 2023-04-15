@@ -60,10 +60,10 @@
             </div> -->
         </form>
         <ul class="nav menu">
-            <li><a href="index.php?controller=category"><svg class="glyph stroked dashboard-dial">
+            <li><a href="index.php?controller=admin"><svg class="glyph stroked dashboard-dial">
                         <use xlink:href="#stroked-dashboard-dial"></use>
                     </svg> Dashboard</a></li>
-            <li><a href="index.php?controller=admin"><svg class="glyph stroked male user ">
+            <li><a href="index.php?controller=user"><svg class="glyph stroked male user ">
                         <use xlink:href="#stroked-male-user" />
                     </svg>Quản lý thành viên</a></li>
             <li><a href="index.php?controller=category"><svg class="glyph stroked clipboard with paper">

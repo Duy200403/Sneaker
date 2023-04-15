@@ -1,36 +1,4 @@
-<?php
-include_once("../../../connect/database.php");
-	if(isset($_GET['user_id'])) {
-		$sqlEditUser = "SELECT * FROM user WHERE user_id =".$_GET['user_id'];
-		$queryEditUser = mysqli_query($conn, $sqlEditUser);
-		$userEdit = mysqli_fetch_assoc($queryEditUser);
 
-	}
-	if(isset($_POST['sbm'])) {
-		if(empty($_POST['user_name'])) {
-			$errors['user_name'] = '<span style="color : red; ">Nhập tên Danh Mục</span>';
-		}else{
-
-			$user_name = $_POST['user_name'];
-			$user_email = $_POST['user_email'];
-			$user_level = $_POST['user_level'];
-			$sqlUpdateUser = "UPDATE user SET
-			user_name = '$user_name',
-			user_email = '$user_email',
-			user_level = '$user_level'
-			WHERE user_id= " .$_GET['user_id'];
-			mysqli_query($conn, $sqlUpdateUser);
-
-			
-			header ("Location: user.php");
-			
-		}
-	}
-
-
-
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,17 +6,17 @@ include_once("../../../connect/database.php");
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Phone Store</title>
 
-<link href="../../../public/css/bootstrap.min.css" rel="stylesheet">
-<link href="../../../public/css/datepicker3.css" rel="stylesheet">
-<link href="../../../public/css/bootstrap-table.css" rel="stylesheet">
-<link href="../../../public/css/styles.css" rel="stylesheet">
+<link href="public/css/bootstrap.min.css" rel="stylesheet">
+<link href="public/css/datepicker3.css" rel="stylesheet">
+<link href="public/css/bootstrap-table.css" rel="stylesheet">
+<link href="public/css/styles.css" rel="stylesheet">
 
 <!--Icons-->
-<script src="../../../public/js/lumino.glyphs.js"></script>
+<script src="public/js/lumino.glyphs.js"></script>
 
 <!--[if lt IE 9]>
-<script src="../../../public/js/html5shiv.js"></script>
-<script src="../../../public/js/respond.min.js"></script>
+<script src="public/js/html5shiv.js"></script>
+<script src="public/js/respond.min.js"></script>
 <![endif]-->
 
 </head>
@@ -101,13 +69,15 @@ include_once("../../../connect/database.php");
 			<ol class="breadcrumb">
                 <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
                 <li><a href="">Quản lý thành viên</a></li>
-				<li class="active"><?php	echo $userEdit['user_name'];  ?></li>
+				<li class="active"></li>
 			</ol>
 		</div><!--/.row-->
-		
+        <?php
+        foreach($array as $user){
+        ?>
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Thành viên: <?php	echo $userEdit['user_name'];  ?></h1>
+				<h1 class="page-header">Thành viên: <?php	echo $user['user_name'];  ?></h1>
 			</div>
         </div><!--/.row-->
         <div class="row">
@@ -116,26 +86,41 @@ include_once("../../../connect/database.php");
                         <div class="panel-body">
                             <!-- <div class="col-md-8">
                                 <div class="alert alert-danger">Email đã tồn tại, Mật khẩu không khớp !</div> -->
-                            <form role="form" method="post">
+                            <form role="form" method="post" action="index.php?controller=user&action=update&id=<?= $user['user_id'];?>">
                                 <div class="form-group">
                                     <label>Họ & Tên</label>
-                                    <input type="text" name="user_name" required values <?php	echo $userEdit['user_name'];  ?> class="form-control" placeholder="">
+                                    <input type="text" name="user_name" required value="<?php echo $user['user_name']?>" class="form-control" placeholder="">
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" name="user_email" required values <?php	echo $userEdit['user_email'];  ?> class="form-control">
-                                </div>                    
+                                    <input type="text" name="user_email" required value="<?php echo $user['user_email']?>" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Mật Khẩu</label>
+                                    <input type="text" name="user_password" required value="<?php echo $user['user_password']?>" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="text" name="phone_number" required value="<?php echo $user['phone_number']?>" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Địa Chỉ</label>
+                                    <input type="text" name="user_address" required value="<?php echo $user['user_address']?>" class="form-control" placeholder="">
+                                </div>
                                 <div class="form-group">
                                     <label>Quyền</label>
                                     <select name="user_level" class="form-control">
-                                        <option value=1> <?php	if($userEdit['user_level'] == 1){echo 'selected';}  ?>Admin</option>
-                                        <option value=2> <?php	if($userEdit['user_level'] == 2){echo 'selected';}  ?>Member</option>
+                                        <option value=1> <?php	if($user['user_level'] == 1){echo 'selected';}  ?>Admin</option>
+                                        <option value=2> <?php	if($user['user_level'] == 2){echo 'selected';}  ?>Member</option>
                                     </select>
                                 </div>
                                 <button type="submit" name="sbm" class="btn btn-primary">Cập nhật</button>
                                 <button type="reset" class="btn btn-default">Làm mới</button>
                             </div>
                         </form>
+                        <?php
+                        }
+                        ?>
                         </div>
                     </div>
                 </div><!-- /.col-->

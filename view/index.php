@@ -112,7 +112,7 @@
             foreach ($array['products'] as $item){
             ?>
             <div class="col-2th">
-                <div class="card">
+                <div class="card" action="index.php?controller=index&action=detail&id=<?=$item['id']?>">
                     <div class="image">
                         <img src="public/images/<?= $item['prd_ima']; ?>">
                     </div>
@@ -138,7 +138,7 @@
         foreach ($array['products'] as $item){
             ?>
             <div class="col-2th">
-                <div class="card">
+                <div class="card" action="index.php?controller=home&action=detail&id=<?=$item['id']?>">
                     <div class="image">
                         <img src="public/images/<?= $item['prd_ima']; ?>">
                     </div>
@@ -154,7 +154,7 @@
         }
         ?>
     </div>
-
+</div>
 <footer>
     <div class="container">
         <div class="row footer">

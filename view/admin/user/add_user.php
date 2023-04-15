@@ -1,14 +1,4 @@
-<?php
-if(isset($_POST['sbm'])){
-    $user_id = $_POST['user_id'];
-    $user_name = $_POST['user_name'];
-    $user_email = $_POST['user_email'];
-    $user_level = $_POST['user_level'];
-    $sqlInsertUser = "INSERT INTO user VALUES ('$user_id','$user_name','$user_email','$user_level')";
-    mysqli_query($conn, $sqlInsertUser);
-    header("Location: user.php");
-}
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,17 +6,17 @@ if(isset($_POST['sbm'])){
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Phone Store</title>
 
-<link href="../../../public/css/bootstrap.min.css" rel="stylesheet">
-<link href="../../../public/css/datepicker3.css" rel="stylesheet">
-<link href="../../../public/css/bootstrap-table.css" rel="stylesheet">
-<link href="../../../public/css/styles.css" rel="stylesheet">
+<link href="public/css/bootstrap.min.css" rel="stylesheet">
+<link href="public/css/datepicker3.css" rel="stylesheet">
+<link href="public/css/bootstrap-table.css" rel="stylesheet">
+<link href="public/css/styles.css" rel="stylesheet">
 
 <!--Icons-->
-<script src="../../../public/js/lumino.glyphs.js"></script>
+<script src="public/js/lumino.glyphs.js"></script>
 
 <!--[if lt IE 9]>
-<script src="../../../public/js/html5shiv.js"></script>
-<script src="../../../public/js/respond.min.js"></script>
+<script src="public/js/html5shiv.js"></script>
+<script src="public/js/respond.min.js"></script>
 <![endif]-->
 
 </head>
@@ -94,27 +84,31 @@ if(isset($_POST['sbm'])){
                         <div class="panel-body">
                             <div class="col-md-8">
                             	<!-- <div class="alert alert-danger">Email đã tồn tại !</div> -->
-                                <form role="form" method="post">
-								<div class="form-group">
-                                    <label>ID</label>
-                                    <input name="user_id" required class="form-control" placeholder="">
-                                </div>
+                                <form action="index.php?controller=user&action=store" role="form" method="post">
+<!--								<div class="form-group">-->
+<!--                                    <label>ID</label>-->
+<!--                                    <input name="user_id" required class="form-control" placeholder="">-->
+<!--                                </div>-->
                                 <div class="form-group">
                                     <label>Họ & Tên</label>
                                     <input name="user_name" required class="form-control" placeholder="">
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input name="user_email" required type="text" class="form-control">
+                                    <input name="user_email" required type="email" class="form-control">
                                 </div>                       
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                     <label>Mật khẩu</label>
-                                    <input name="user_pass" required type="password"  class="form-control">
+                                    <input name="user_password" required type="password"  class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Nhập lại mật khẩu</label>
-                                    <input name="user_re_pass" required type="password"  class="form-control">
-                                </div> -->
+                                    <label>Phone</label>
+                                    <input name="phone_number" required type="text"  class="form-control">
+                                </div>
+                                <div class="form-group">
+                                     <label>Địa Chỉ</label>
+                                     <input name="user_address" required type="text"  class="form-control">
+                                </div>
                                 <div class="form-group">
                                     <label>Quyền</label>
                                     <select name="user_level" class="form-control">
